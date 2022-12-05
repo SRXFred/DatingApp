@@ -15,7 +15,7 @@ using Microsoft.Extensions.Logging;
 
 namespace API.Controllers
 {
-    [Authorize]
+    
     public class UsersController : BaseApiController
     {
         private readonly IUserRepository _userRepository;
@@ -32,8 +32,8 @@ namespace API.Controllers
             var users = await _userRepository.GetMembersAsync();
             return Ok(users);
         }
-
-        [HttpGet("{username}")]
+        [Authorize]
+        //[HttpGet("{username}")]
         public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
             var user = await _userRepository.GetMembersAsync(username);
